@@ -57,6 +57,10 @@ class TourRegistrationController extends Controller
         $data['adults_count'] = $data['adults_count'] ?? 0;
         $data['students_count'] = $data['students_count'] ?? 0;
 
+        if (! empty($data['country_code'])) {
+            $data['country_code'] = ltrim($data['country_code'], '+');
+        }
+
         $totalPeople = (int) $data['adults_count'] + (int) $data['students_count'];
 
         if ($totalPeople < 1) {

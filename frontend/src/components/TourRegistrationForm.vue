@@ -11,7 +11,7 @@ const defaultForm = () => ({
   contact_name: '',
   email: '',
   phone: '',
-  country_code: '+91',
+  country_code: '91',
   organisation: '',
   group_type: 'Individual',
   preferred_date: '',
@@ -22,16 +22,16 @@ const defaultForm = () => ({
 })
 
 const countryOptions = [
-  { label: 'India (+91)', value: '+91' },
-  { label: 'United States (+1)', value: '+1' },
-  { label: 'United Kingdom (+44)', value: '+44' },
-  { label: 'United Arab Emirates (+971)', value: '+971' },
-  { label: 'Singapore (+65)', value: '+65' },
-  { label: 'Australia (+61)', value: '+61' },
-  { label: 'Canada (+1)', value: '+1' },
-  { label: 'France (+33)', value: '+33' },
-  { label: 'Germany (+49)', value: '+49' },
-  { label: 'Japan (+81)', value: '+81' },
+  { label: 'India (+91)', value: '91' },
+  { label: 'United States (+1)', value: '1' },
+  { label: 'United Kingdom (+44)', value: '44' },
+  { label: 'United Arab Emirates (+971)', value: '971' },
+  { label: 'Singapore (+65)', value: '65' },
+  { label: 'Australia (+61)', value: '61' },
+  { label: 'Canada (+1)', value: '1' },
+  { label: 'France (+33)', value: '33' },
+  { label: 'Germany (+49)', value: '49' },
+  { label: 'Japan (+81)', value: '81' },
 ]
 
 const form = reactive(defaultForm())
