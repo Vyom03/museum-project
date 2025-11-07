@@ -35,7 +35,7 @@ class AdminTourRegistrationController extends Controller
             ->map(fn ($collection, $date) => [
                 'date' => $date,
                 'readable_date' => Carbon::parse($date)->translatedFormat('j M Y (D)'),
-                'total_visitors' => $collection->sum('visitors_count'),
+                'total_visitors' => $this->totalVisitors($collection),
                 'slots' => $this->formatSlots($collection),
             ])
             ->values();
@@ -45,7 +45,7 @@ class AdminTourRegistrationController extends Controller
             'meta' => [
                 'total_days' => $grouped->count(),
                 'total_registrations' => $registrations->count(),
-                'total_visitors' => $registrations->sum('visitors_count'),
+                'total_visitors' => $this->totalVisitors($registrations),
             ],
         ]);
     }
@@ -55,15 +55,16 @@ class AdminTourRegistrationController extends Controller
         return $collection
             ->groupBy('preferred_slot')
             ->map(function ($slotCollection, $slot) {
-                $booked = $slotCollection->sum('visitors_count');
+                $booked = $this->totalVisitors($slotCollection);
                 $capacity = $this->capacityForSlot($slot);
+                $remaining = $capacity !== null ? max($capacity - $booked, 0) : null;
 
                 return [
                     'slot' => $slot,
                     'label' => ucfirst($slot),
                     'capacity' => $capacity,
                     'booked_visitors' => $booked,
-                    'remaining_capacity' => max($capacity - $booked, 0),
+                    'remaining_capacity' => $remaining,
                     'registrations' => $slotCollection->map(function (TourRegistration $registration) {
                         return [
                             'id' => $registration->id,
@@ -72,7 +73,9 @@ class AdminTourRegistrationController extends Controller
                             'email' => $registration->email,
                             'phone' => $registration->phone,
                             'country_code' => $registration->country_code,
-                            'visitors_count' => $registration->visitors_count,
+                            'visitors_count' => $this->visitorCount($registration),
+                            'adults_count' => $registration->adults_count,
+                            'students_count' => $registration->students_count,
                             'needs_guided_tour' => (bool) $registration->needs_guided_tour,
                             'notes' => $registration->notes,
                             'created_at' => $registration->created_at,
@@ -86,12 +89,33 @@ class AdminTourRegistrationController extends Controller
             ->values();
     }
 
-    protected function capacityForSlot(string $slot): int
+    protected function capacityForSlot(string $slot): ?int
     {
         return match ($slot) {
-            'morning' => 20,
-            'afternoon' => 15,
-            default => 0,
+            'Morning (10:30 AM - 12:00 PM)' => 20,
+            'Afternoon (02:30 PM - 04:00 PM)' => 15,
+            default => null,
         };
+    }
+
+    protected function visitorCount(TourRegistration $registration): int
+    {
+        $visitorsCount = $registration->visitors_count ?? null;
+
+        if ($visitorsCount !== null) {
+            return (int) $visitorsCount;
+        }
+
+        $adults = (int) ($registration->adults_count ?? 0);
+        $students = (int) ($registration->students_count ?? 0);
+
+        return $adults + $students;
+    }
+
+    protected function totalVisitors($collection): int
+    {
+        return $collection->sum(function (TourRegistration $registration) {
+            return $this->visitorCount($registration);
+        });
     }
 }

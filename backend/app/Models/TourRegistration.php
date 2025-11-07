@@ -20,4 +20,11 @@ class TourRegistration extends Model
         'needs_guided_tour',
         'notes',
     ];
+
+    protected $casts = [
+        'preferred_date' => 'date',
+        'needs_guided_tour' => 'boolean',
+        'adults_count' => 'integer',
+        'students_count' => 'integer',
+    ];
 }

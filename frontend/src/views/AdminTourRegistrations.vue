@@ -170,7 +170,11 @@ onMounted(() => {
 })
 
 function slotStatusColour(slot) {
-  const fillRatio = slot.capacity ? slot.booked_visitors / slot.capacity : 0
+  if (slot.capacity === null || slot.capacity === 0) {
+    return 'status-open'
+  }
+
+  const fillRatio = slot.booked_visitors / slot.capacity
 
   if (fillRatio >= 1) return 'status-full'
   if (fillRatio >= 0.75) return 'status-high'
@@ -259,11 +263,19 @@ function slotStatusColour(slot) {
               <div>
                 <h3>{{ slot.label }}</h3>
                 <p>
-                  {{ slot.booked_visitors }} / {{ slot.capacity }} visitors booked
+                  <template v-if="slot.capacity !== null">
+                    {{ slot.booked_visitors }} / {{ slot.capacity }} visitors booked
+                  </template>
+                  <template v-else>
+                    {{ slot.booked_visitors }} visitors booked
+                  </template>
                 </p>
               </div>
               <span class="slot-status" :class="slotStatusColour(slot)">
-                <template v-if="slot.remaining_capacity > 0">
+                <template v-if="slot.capacity === null">
+                  Open
+                </template>
+                <template v-else-if="slot.remaining_capacity > 0">
                   {{ slot.remaining_capacity }} slots left
                 </template>
                 <template v-else>Full</template>
