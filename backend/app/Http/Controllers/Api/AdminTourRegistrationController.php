@@ -16,6 +16,22 @@ class AdminTourRegistrationController extends Controller
             ->orderBy('preferred_slot')
             ->orderBy('created_at');
 
+        $dateOptions = TourRegistration::query()
+            ->select('preferred_date')
+            ->distinct()
+            ->orderBy('preferred_date')
+            ->get()
+            ->map(function (TourRegistration $registration) {
+                $date = $registration->preferred_date?->toDateString();
+
+                return [
+                    'value' => $date,
+                    'label' => $registration->preferred_date?->translatedFormat('j M Y (D)'),
+                ];
+            })
+            ->filter(fn ($option) => ! empty($option['value']))
+            ->values();
+
         if ($request->filled('date')) {
             $query->whereDate('preferred_date', $request->date);
         }
@@ -46,6 +62,7 @@ class AdminTourRegistrationController extends Controller
                 'total_days' => $grouped->count(),
                 'total_registrations' => $registrations->count(),
                 'total_visitors' => $this->totalVisitors($registrations),
+                'available_dates' => $dateOptions,
             ],
         ]);
     }

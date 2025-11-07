@@ -39,12 +39,7 @@ function handleUnauthorized() {
   redirectToLogin()
 }
 
-const availableDates = computed(() =>
-  registrations.value.map(group => ({
-    value: group.date,
-    label: group.readable_date
-  }))
-)
+const availableDates = computed(() => meta.value?.available_dates ?? [])
 
 const filteredGroups = computed(() => {
   const term = searchTerm.value.trim().toLowerCase()
@@ -156,10 +151,10 @@ function logout() {
   router.replace({ name: 'admin-login' })
 }
 
-watch(registrations, () => {
+watch(meta, () => {
   if (!selectedDate.value) return
 
-  const exists = registrations.value.some(group => group.date === selectedDate.value)
+  const exists = (meta.value?.available_dates ?? []).some(date => date.value === selectedDate.value)
   if (!exists) {
     selectedDate.value = ''
   }
