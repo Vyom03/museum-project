@@ -5,6 +5,7 @@ import ProductDetail from '@/views/ProductDetail.vue'
 import CartView from '@/views/CartView.vue'
 import CheckoutView from '@/views/CheckoutView.vue'
 import AboutView from '@/views/AboutView.vue'
+import AdminDashboard from '@/views/AdminDashboard.vue'
 import TourRegistrationForm from '@/components/TourRegistrationForm.vue'
 
 const routes = [
@@ -37,6 +38,11 @@ const routes = [
     path: '/about',
     name: 'about',
     component: AboutView
+  },
+  {
+    path: '/admin/dashboard',
+    name: 'admin-dashboard',
+    component: AdminDashboard
   },
   {
     path: '/tours',

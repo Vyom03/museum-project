@@ -9,7 +9,8 @@ const cartStore = useCartStore()
 const navigation = [
   { name: 'Shop', path: '/shop' },
   { name: 'About', path: '/about' },
-  { name: 'Book a Tour', path: '/tours' }
+  { name: 'Book a Tour', path: '/tours' },
+  { name: 'Admin', path: '/admin/dashboard' }
 ]
 
 const currentYear = new Date().getFullYear()

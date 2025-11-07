@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AboutController;
+use App\Http\Controllers\Api\AdminAnalyticsController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CheckoutController;
 use App\Http\Controllers\Api\ProductController;
@@ -25,4 +26,5 @@ Route::prefix('shop')->group(function () {
 });
 
 Route::get('about', [AboutController::class, 'show']);
+Route::get('admin/analytics', AdminAnalyticsController::class);
 
