@@ -4,6 +4,7 @@ import ShopHome from '@/views/ShopHome.vue'
 import ProductDetail from '@/views/ProductDetail.vue'
 import CartView from '@/views/CartView.vue'
 import CheckoutView from '@/views/CheckoutView.vue'
+import AboutView from '@/views/AboutView.vue'
 import TourRegistrationForm from '@/components/TourRegistrationForm.vue'
 
 const routes = [
@@ -31,6 +32,11 @@ const routes = [
     path: '/shop/checkout',
     name: 'checkout',
     component: CheckoutView
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: AboutView
   },
   {
     path: '/tours',

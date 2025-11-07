@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AboutController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CheckoutController;
 use App\Http\Controllers\Api\ProductController;
@@ -22,4 +23,6 @@ Route::prefix('shop')->group(function () {
 
     Route::post('checkout', CheckoutController::class);
 });
+
+Route::get('about', [AboutController::class, 'show']);
 

@@ -39,18 +39,6 @@ class ProductSeeder extends Seeder
                 ],
             ],
             [
-                'name' => 'Indigo Ajrakh Shawl',
-                'summary' => 'Natural indigo Ajrakh shawl block-printed with hand-carved wooden blocks.',
-                'description' => '<p>Crafted in Bhuj using slow multi-stage dyeing with indigo, madder and iron. The shawl arrives in a museum archival box.</p>',
-                'price' => 9800,
-                'compare_at_price' => 11200,
-                'inventory_count' => 8,
-                'is_featured' => true,
-                'images' => [
-                    'https://images.unsplash.com/photo-1542293787938-4d2226c12e79?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
-                ],
-            ],
-            [
                 'name' => 'Handwoven Silk Sari (Ajrakh Palette)',
                 'summary' => 'Bhuj-inspired silk sari featuring indigo and madder Ajrakh motifs on handloom silk.',
                 'description' => '<p>Limited-edition silk sari co-created with Ajrakh artisans. Features hand block printing, natural dyes, and a hand-rolled edge, presented in archival packaging.</p>',
