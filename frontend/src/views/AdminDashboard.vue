@@ -2,20 +2,15 @@
 import { computed, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
+import { buildAdminAuthHeader, clearAdminToken, getAdminToken } from '@/utils/adminAuth'
 
 const router = useRouter()
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, '') ?? '/api'
-const ADMIN_TOKEN_KEY = 'vyomAdminCreds'
 
 const loading = ref(false)
 const error = ref('')
 const analytics = ref(null)
-
-function getStoredToken() {
-  if (typeof window === 'undefined') return null
-  return localStorage.getItem(ADMIN_TOKEN_KEY)
-}
 
 function redirectToLogin() {
   router.replace({
@@ -25,7 +20,7 @@ function redirectToLogin() {
 }
 
 function ensureToken() {
-  const token = getStoredToken()
+  const token = getAdminToken()
 
   if (!token) {
     redirectToLogin()
@@ -36,9 +31,7 @@ function ensureToken() {
 }
 
 function handleUnauthorized() {
-  if (typeof window !== 'undefined') {
-    localStorage.removeItem(ADMIN_TOKEN_KEY)
-  }
+  clearAdminToken()
   redirectToLogin()
 }
 
@@ -55,9 +48,7 @@ async function fetchAnalytics() {
 
   try {
     const { data } = await axios.get(`${apiBaseUrl}/admin/analytics`, {
-      headers: {
-        Authorization: `Basic ${token}`
-      }
+      headers: buildAdminAuthHeader()
     })
     analytics.value = data
   } catch (err) {
@@ -72,9 +63,7 @@ async function fetchAnalytics() {
 }
 
 function logout() {
-  if (typeof window !== 'undefined') {
-    localStorage.removeItem(ADMIN_TOKEN_KEY)
-  }
+  clearAdminToken()
   analytics.value = null
   router.replace({ name: 'admin-login' })
 }
@@ -132,6 +121,11 @@ onMounted(() => {
         </button>
       </div>
     </header>
+
+    <nav class="admin-nav">
+      <RouterLink class="admin-nav-link" :to="{ name: 'admin-dashboard' }">Analytics</RouterLink>
+      <RouterLink class="admin-nav-link" :to="{ name: 'admin-tour-registrations' }">Tour Registrations</RouterLink>
+    </nav>
 
     <div v-if="error" class="error-banner">{{ error }}</div>
 
@@ -228,6 +222,30 @@ onMounted(() => {
 .actions {
   display: flex;
   gap: 0.75rem;
+}
+
+.admin-nav {
+  display: inline-flex;
+  gap: 0.75rem;
+  padding: 0.4rem;
+  border-radius: 999px;
+  background: rgba(10, 17, 34, 0.6);
+  border: 1px solid rgba(120, 144, 255, 0.22);
+  width: fit-content;
+}
+
+.admin-nav-link {
+  padding: 0.55rem 1.4rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: rgba(224, 229, 255, 0.75);
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.admin-nav-link.router-link-active {
+  background: linear-gradient(135deg, #4059d6, #6c81ff);
+  color: #fff;
 }
 
 .ghost-btn {

@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import axios from 'axios'
+import { storeAdminToken } from '@/utils/adminAuth'
 
 const router = useRouter()
 const route = useRoute()
@@ -12,7 +13,6 @@ const error = ref('')
 const loading = ref(false)
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, '') ?? '/api'
-const ADMIN_TOKEN_KEY = 'vyomAdminCreds'
 
 async function handleLogin() {
   error.value = ''
@@ -32,10 +32,7 @@ async function handleLogin() {
       }
     })
 
-    if (typeof window !== 'undefined') {
-      const token = btoa(`${username.value}:${password.value}`)
-      localStorage.setItem(ADMIN_TOKEN_KEY, token)
-    }
+    storeAdminToken(btoa(`${username.value}:${password.value}`))
 
     const redirectPath = route.query.redirect ?? '/admin/dashboard'
     router.replace(redirectPath)

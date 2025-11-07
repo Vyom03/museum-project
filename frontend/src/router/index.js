@@ -6,8 +6,10 @@ import CartView from '@/views/CartView.vue'
 import CheckoutView from '@/views/CheckoutView.vue'
 import AboutView from '@/views/AboutView.vue'
 import AdminDashboard from '@/views/AdminDashboard.vue'
+import AdminTourRegistrations from '@/views/AdminTourRegistrations.vue'
 import AdminLogin from '@/views/AdminLogin.vue'
 import TourRegistrationForm from '@/components/TourRegistrationForm.vue'
+import { hasAdminToken } from '@/utils/adminAuth'
 
 const routes = [
   {
@@ -47,6 +49,12 @@ const routes = [
     meta: { requiresAdmin: true }
   },
   {
+    path: '/admin/tour-registrations',
+    name: 'admin-tour-registrations',
+    component: AdminTourRegistrations,
+    meta: { requiresAdmin: true }
+  },
+  {
     path: '/admin/login',
     name: 'admin-login',
     component: AdminLogin,
@@ -67,19 +75,12 @@ const router = createRouter({
   }
 })
 
-const ADMIN_TOKEN_KEY = 'vyomAdminCreds'
-
-function hasAdminCredentials() {
-  if (typeof window === 'undefined') return false
-  return Boolean(localStorage.getItem(ADMIN_TOKEN_KEY))
-}
-
 router.beforeEach((to, from, next) => {
-  if (to.meta.requiresAdmin && !hasAdminCredentials()) {
+  if (to.meta.requiresAdmin && !hasAdminToken()) {
     return next({ name: 'admin-login', query: { redirect: to.fullPath } })
   }
 
-  if (to.meta.isAdminLogin && hasAdminCredentials()) {
+  if (to.meta.isAdminLogin && hasAdminToken()) {
     return next({ name: 'admin-dashboard' })
   }
 
