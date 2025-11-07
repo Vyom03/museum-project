@@ -1,12 +1,83 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import axios from 'axios'
 
+const router = useRouter()
+
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, '') ?? '/api'
+const ADMIN_TOKEN_KEY = 'vyomAdminCreds'
 
 const loading = ref(false)
 const error = ref('')
 const analytics = ref(null)
+
+function getStoredToken() {
+  if (typeof window === 'undefined') return null
+  return localStorage.getItem(ADMIN_TOKEN_KEY)
+}
+
+function redirectToLogin() {
+  router.replace({
+    name: 'admin-login',
+    query: { redirect: '/admin/dashboard' }
+  })
+}
+
+function ensureToken() {
+  const token = getStoredToken()
+
+  if (!token) {
+    redirectToLogin()
+    return null
+  }
+
+  return token
+}
+
+function handleUnauthorized() {
+  if (typeof window !== 'undefined') {
+    localStorage.removeItem(ADMIN_TOKEN_KEY)
+  }
+  redirectToLogin()
+}
+
+async function fetchAnalytics() {
+  const token = ensureToken()
+
+  if (!token) {
+    analytics.value = null
+    return
+  }
+
+  loading.value = true
+  error.value = ''
+
+  try {
+    const { data } = await axios.get(`${apiBaseUrl}/admin/analytics`, {
+      headers: {
+        Authorization: `Basic ${token}`
+      }
+    })
+    analytics.value = data
+  } catch (err) {
+    if (err.response?.status === 401) {
+      handleUnauthorized()
+      return
+    }
+    error.value = err.response?.data?.message ?? 'Unable to load analytics right now.'
+  } finally {
+    loading.value = false
+  }
+}
+
+function logout() {
+  if (typeof window !== 'undefined') {
+    localStorage.removeItem(ADMIN_TOKEN_KEY)
+  }
+  analytics.value = null
+  router.replace({ name: 'admin-login' })
+}
 
 const highlightCards = computed(() => {
   if (!analytics.value) return []
@@ -39,20 +110,6 @@ const highlightCards = computed(() => {
   ]
 })
 
-async function fetchAnalytics() {
-  loading.value = true
-  error.value = ''
-
-  try {
-    const { data } = await axios.get(`${apiBaseUrl}/admin/analytics`)
-    analytics.value = data
-  } catch (err) {
-    error.value = err.response?.data?.message ?? 'Unable to load analytics right now.'
-  } finally {
-    loading.value = false
-  }
-}
-
 onMounted(() => {
   fetchAnalytics()
 })
@@ -66,9 +123,14 @@ onMounted(() => {
         <h1>Analytics Dashboard</h1>
       </div>
 
-      <button class="ghost-btn" type="button" @click="fetchAnalytics" :disabled="loading">
-        {{ loading ? 'Refreshing…' : 'Refresh data' }}
-      </button>
+      <div class="actions">
+        <button class="ghost-btn" type="button" @click="fetchAnalytics" :disabled="loading">
+          {{ loading ? 'Refreshing…' : 'Refresh data' }}
+        </button>
+        <button class="ghost-btn" type="button" @click="logout">
+          Sign out
+        </button>
+      </div>
     </header>
 
     <div v-if="error" class="error-banner">{{ error }}</div>
@@ -161,6 +223,11 @@ onMounted(() => {
   margin: 0.4rem 0 0;
   font-family: 'Playfair Display', serif;
   font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
 }
 
 .ghost-btn {

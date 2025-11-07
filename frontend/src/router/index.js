@@ -6,6 +6,7 @@ import CartView from '@/views/CartView.vue'
 import CheckoutView from '@/views/CheckoutView.vue'
 import AboutView from '@/views/AboutView.vue'
 import AdminDashboard from '@/views/AdminDashboard.vue'
+import AdminLogin from '@/views/AdminLogin.vue'
 import TourRegistrationForm from '@/components/TourRegistrationForm.vue'
 
 const routes = [
@@ -42,7 +43,14 @@ const routes = [
   {
     path: '/admin/dashboard',
     name: 'admin-dashboard',
-    component: AdminDashboard
+    component: AdminDashboard,
+    meta: { requiresAdmin: true }
+  },
+  {
+    path: '/admin/login',
+    name: 'admin-login',
+    component: AdminLogin,
+    meta: { isAdminLogin: true }
   },
   {
     path: '/tours',
@@ -57,6 +65,25 @@ const router = createRouter({
   scrollBehavior() {
     return { top: 0 }
   }
+})
+
+const ADMIN_TOKEN_KEY = 'vyomAdminCreds'
+
+function hasAdminCredentials() {
+  if (typeof window === 'undefined') return false
+  return Boolean(localStorage.getItem(ADMIN_TOKEN_KEY))
+}
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAdmin && !hasAdminCredentials()) {
+    return next({ name: 'admin-login', query: { redirect: to.fullPath } })
+  }
+
+  if (to.meta.isAdminLogin && hasAdminCredentials()) {
+    return next({ name: 'admin-dashboard' })
+  }
+
+  return next()
 })
 
 export default router

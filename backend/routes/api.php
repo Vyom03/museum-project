@@ -26,5 +26,5 @@ Route::prefix('shop')->group(function () {
 });
 
 Route::get('about', [AboutController::class, 'show']);
-Route::get('admin/analytics', AdminAnalyticsController::class);
+Route::get('admin/analytics', AdminAnalyticsController::class)->middleware('admin.basic');
 
