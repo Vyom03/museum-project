@@ -194,6 +194,25 @@ onMounted(() => {
   color: #e2e8ff;
 }
 
+.dashboard,
+.dashboard * {
+  font-family:
+    'Open Sans',
+    'Kanit',
+    'Segoe UI',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    sans-serif;
+}
+
+.dashboard h1,
+.dashboard h2,
+.dashboard h3 {
+  font-family: 'Playfair Display', serif;
+}
+
 .page-header {
   display: flex;
   align-items: center;

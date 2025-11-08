@@ -314,6 +314,25 @@ function slotStatusColour(slot) {
   color: #e2e8ff;
 }
 
+.admin-page,
+.admin-page * {
+  font-family:
+    'Open Sans',
+    'Kanit',
+    'Segoe UI',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    sans-serif;
+}
+
+.admin-page h1,
+.admin-page h2,
+.admin-page h3 {
+  font-family: 'Playfair Display', serif;
+}
+
 .page-header {
   display: flex;
   align-items: center;
