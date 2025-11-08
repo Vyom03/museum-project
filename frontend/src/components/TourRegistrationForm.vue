@@ -439,11 +439,11 @@ const handleSubmit = async () => {
 
 .page {
   min-height: 100vh;
-  color: #e2e8ff;
+  color: var(--vh-text-primary);
   font-family: 'Open Sans', 'Segoe UI', sans-serif;
   display: flex;
   justify-content: center;
-  background: linear-gradient(180deg, #050a18 0%, #0a1530 50%, #101f40 100%);
+  background: var(--vh-background-gradient);
   position: relative;
 }
 
@@ -451,9 +451,9 @@ const handleSubmit = async () => {
   content: '';
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at 18% 20%, rgba(86, 118, 255, 0.28), transparent 55%),
-    radial-gradient(circle at 80% 25%, rgba(134, 192, 255, 0.3), transparent 45%),
-    radial-gradient(circle at 55% 78%, rgba(255, 166, 110, 0.25), transparent 42%);
+  background: radial-gradient(circle at 18% 20%, rgba(120, 143, 213, 0.18), transparent 55%),
+    radial-gradient(circle at 80% 25%, rgba(120, 143, 213, 0.14), transparent 45%),
+    radial-gradient(circle at 55% 78%, rgba(197, 167, 121, 0.14), transparent 42%);
   pointer-events: none;
   z-index: 0;
 }
@@ -476,14 +476,14 @@ const handleSubmit = async () => {
 }
 
 .card {
-  background: rgba(15, 23, 50, 0.92);
+  background: var(--vh-surface-100);
   width: min(960px, 100%);
   padding: clamp(2.5rem, 4vw, 3rem);
   border-radius: 1.75rem;
-  box-shadow: 0 30px 60px rgba(5, 10, 26, 0.55);
-  border: 1px solid rgba(107, 132, 255, 0.25);
+  box-shadow: var(--vh-shadow-strong);
+  border: 1px solid var(--vh-border-strong);
   backdrop-filter: blur(14px);
-  color: #e2e8ff;
+  color: var(--vh-text-primary);
 }
 
 .card__header {
@@ -496,12 +496,12 @@ const handleSubmit = async () => {
   font-family: 'Playfair Display', 'Kanit', serif;
   font-size: 2.15rem;
   margin: 0;
-  color: #f4f6ff;
+  color: var(--vh-text-primary);
 }
 
 .card__subtitle {
   font-size: 1rem;
-  color: rgba(214, 220, 255, 0.7);
+  color: var(--vh-text-secondary);
   line-height: 1.7;
   max-width: 36rem;
 }
@@ -509,7 +509,7 @@ const handleSubmit = async () => {
 
 
 .card__divider {
-  border-bottom: 1px solid rgba(107, 132, 255, 0.2);
+  border-bottom: 1px solid var(--vh-border-soft);
   margin: 1.75rem 0 2rem;
 }
 
@@ -544,7 +544,7 @@ const handleSubmit = async () => {
 
 .field span {
   font-weight: 600;
-  color: #dfe4ff;
+  color: var(--vh-text-secondary);
 }
 
 .field__label-with-badge {
@@ -557,45 +557,45 @@ const handleSubmit = async () => {
 .field input,
 .field select,
 .field textarea {
-  border: 1px solid rgba(107, 132, 255, 0.35);
+  border: 1px solid var(--vh-border-soft);
   border-radius: 0.75rem;
   padding: 0.85rem 1rem;
   font-size: 0.95rem;
   transition: border 0.2s ease, box-shadow 0.2s ease;
   outline: none;
-  background: rgba(8, 13, 30, 0.85);
-  color: #f0f4ff;
+  background: var(--vh-surface-200);
+  color: var(--vh-text-primary);
 }
 
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  border-color: rgba(255, 176, 91, 0.85);
-  box-shadow: 0 0 0 3px rgba(255, 176, 91, 0.25);
+  border-color: var(--vh-accent-warm);
+  box-shadow: var(--vh-focus-ring);
 }
 
 
 .field__error {
-  color: #d5624f;
+  color: #f2b5b5;
   font-size: 0.85rem;
 }
 
 .field__helper {
   font-size: 0.85rem;
-  color: rgba(200, 210, 255, 0.65);
+  color: var(--vh-text-muted);
 }
 
 .field__helper--muted {
-  color: rgba(200, 210, 255, 0.5);
+  color: var(--vh-text-subtle);
   margin-top: -0.5rem;
 }
 
 .field input:disabled,
 .field select:disabled,
 .field textarea:disabled {
-  background-color: rgba(22, 30, 56, 0.7);
+  background-color: rgba(22, 30, 56, 0.55);
   cursor: not-allowed;
-  color: rgba(174, 184, 220, 0.7);
+  color: rgba(174, 184, 220, 0.65);
 }
 
 .availability {
@@ -608,21 +608,21 @@ const handleSubmit = async () => {
   font-size: 0.9rem;
   padding: 0.85rem 1rem;
   border-radius: 0.75rem;
-  border: 1px solid rgba(107, 132, 255, 0.3);
-  background: rgba(12, 19, 42, 0.85);
-  color: rgba(224, 229, 255, 0.88);
+  border: 1px solid var(--vh-border-soft);
+  background: var(--vh-surface-200);
+  color: var(--vh-text-secondary);
 }
 
 .availability__status--warning {
-  border-color: rgba(255, 190, 92, 0.5);
-  background: rgba(255, 190, 92, 0.22);
-  color: #ffddbb;
+  border-color: rgba(197, 167, 121, 0.45);
+  background: rgba(197, 167, 121, 0.22);
+  color: var(--vh-accent-warm);
 }
 
 .availability__status--error {
-  border-color: rgba(255, 124, 124, 0.5);
-  background: rgba(255, 124, 124, 0.25);
-  color: #ffd8d8;
+  border-color: rgba(205, 92, 92, 0.45);
+  background: rgba(205, 92, 92, 0.22);
+  color: #f3c5c5;
 }
 
 .availability__status--inline {
@@ -634,18 +634,18 @@ const handleSubmit = async () => {
   font-weight: 600;
   padding: 0.2rem 0.75rem;
   border-radius: 999px;
-  background: rgba(107, 132, 255, 0.22);
-  color: #dbe2ff;
-  border: 1px solid rgba(107, 132, 255, 0.4);
+  background: var(--vh-accent-primary-soft);
+  color: var(--vh-text-secondary);
+  border: 1px solid var(--vh-border-soft);
   white-space: nowrap;
 }
 
 .alert--inline {
   border-radius: 1rem;
-  box-shadow: 0 20px 45px rgba(8, 12, 30, 0.45);
-  border: 1px solid rgba(107, 132, 255, 0.35);
-  background: rgba(14, 23, 50, 0.92);
-  color: #e2e8ff;
+  box-shadow: var(--vh-shadow-soft);
+  border: 1px solid var(--vh-border-strong);
+  background: var(--vh-surface-100);
+  color: var(--vh-text-primary);
 }
 
 .checkbox {
@@ -653,7 +653,7 @@ const handleSubmit = async () => {
   align-items: center;
   gap: 0.75rem;
   font-size: 0.95rem;
-  color: rgba(224, 229, 255, 0.85);
+  color: var(--vh-text-secondary);
 }
 
 .checkbox input {
@@ -663,11 +663,11 @@ const handleSubmit = async () => {
 
 .disclaimer {
   font-size: 0.92rem;
-  color: rgba(214, 220, 255, 0.75);
-  background: rgba(14, 23, 50, 0.9);
+  color: var(--vh-text-secondary);
+  background: var(--vh-surface-300);
   padding: 1.15rem 1.35rem;
   border-radius: 0.9rem;
-  border: 1px solid rgba(107, 132, 255, 0.25);
+  border: 1px solid var(--vh-border-soft);
 }
 
 .submit {
@@ -680,8 +680,8 @@ const handleSubmit = async () => {
   padding: 0.9rem 2.5rem;
   font-size: 1rem;
   font-weight: 600;
-  background: linear-gradient(135deg, #4059d6, #6c81ff);
-  color: #f6f9ff;
+  background: var(--vh-button-primary);
+  color: var(--vh-text-primary);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
@@ -693,15 +693,50 @@ const handleSubmit = async () => {
 
 .submit:not(:disabled):hover {
   transform: translateY(-1px);
-  box-shadow: 0 12px 28px rgba(31, 39, 76, 0.35);
+  box-shadow: var(--vh-button-primary-hover-shadow);
+}
+
+:deep(input[type='date']),
+:deep(input[type='datetime-local']),
+:deep(input[type='month']),
+:deep(input[type='time']) {
+  color-scheme: dark;
+}
+
+:deep(input[type='date']::-webkit-calendar-picker-indicator),
+:deep(input[type='datetime-local']::-webkit-calendar-picker-indicator),
+:deep(input[type='month']::-webkit-calendar-picker-indicator),
+:deep(input[type='time']::-webkit-calendar-picker-indicator) {
+  opacity: 1;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  filter: none;
+  -webkit-filter: none;
+  mask: none;
+  -webkit-mask: none;
+  border-radius: 4px;
+  padding: 2px;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='3.5' y='5.5' width='17' height='15' rx='2.5' stroke='%23E6EBFF' stroke-width='1.5'/%3E%3Cpath d='M8 3.5V7' stroke='%2392A9F0' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M16 3.5V7' stroke='%2392A9F0' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M3.5 10H20.5' stroke='%2392A9F0' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M8.25 13.25H10.75V15.75H8.25V13.25Z' fill='%2392A9F0'/%3E%3C/svg%3E");
+}
+
+:deep(input[type='date']::-webkit-calendar-picker-indicator:hover),
+:deep(input[type='datetime-local']::-webkit-calendar-picker-indicator:hover),
+:deep(input[type='month']::-webkit-calendar-picker-indicator:hover),
+:deep(input[type='time']::-webkit-calendar-picker-indicator:hover) {
+  opacity: 1;
+  transform: scale(1.05);
 }
 
 .spinner {
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  border-top-color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: #ffffff;
   animation: spin 0.8s linear infinite;
 }
 
@@ -712,15 +747,15 @@ const handleSubmit = async () => {
 }
 
 .alert--success {
-  background: rgba(34, 139, 94, 0.22);
-  color: #9ee6c1;
-  border: 1px solid rgba(34, 139, 94, 0.35);
+  background: rgba(90, 150, 120, 0.22);
+  color: #b7e5cf;
+  border: 1px solid rgba(90, 150, 120, 0.35);
 }
 
 .alert--error {
-  background: rgba(231, 76, 60, 0.12);
-  color: #992d22;
-  border: 1px solid rgba(231, 76, 60, 0.25);
+  background: rgba(205, 92, 92, 0.16);
+  color: #f3c5c5;
+  border: 1px solid rgba(205, 92, 92, 0.3);
 }
 
 @keyframes spin {

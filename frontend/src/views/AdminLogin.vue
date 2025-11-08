@@ -93,12 +93,12 @@ async function handleLogin() {
 
 .login-card {
   width: min(420px, 100%);
-  background: rgba(10, 17, 34, 0.85);
+  background: var(--vh-surface-100);
   border-radius: 2rem;
-  border: 1px solid rgba(120, 144, 255, 0.25);
+  border: 1px solid var(--vh-border-strong);
   padding: clamp(1.8rem, 4vw, 2.6rem);
-  color: #e2e8ff;
-  box-shadow: 0 30px 60px rgba(5, 10, 26, 0.55);
+  color: var(--vh-text-primary);
+  box-shadow: var(--vh-shadow-strong);
   backdrop-filter: blur(12px);
   display: flex;
   flex-direction: column;
@@ -109,7 +109,7 @@ header .eyebrow {
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  color: rgba(224, 229, 255, 0.6);
+  color: var(--vh-text-subtle);
 }
 
 header h1 {
@@ -119,7 +119,7 @@ header h1 {
 }
 
 .lead {
-  color: rgba(224, 229, 255, 0.68);
+  color: var(--vh-text-muted);
   margin: 0;
 }
 
@@ -139,29 +139,29 @@ header h1 {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: rgba(224, 229, 255, 0.75);
+  color: var(--vh-text-muted);
 }
 
 .field input {
   border-radius: 1rem;
-  border: 1px solid rgba(120, 144, 255, 0.35);
-  background: rgba(9, 14, 30, 0.85);
-  color: #f3f6ff;
+  border: 1px solid var(--vh-border-soft);
+  background: var(--vh-surface-200);
+  color: var(--vh-text-primary);
   padding: 0.85rem 1rem;
   font-size: 1rem;
   outline: none;
 }
 
 .field input:focus {
-  border-color: rgba(255, 176, 91, 0.8);
-  box-shadow: 0 0 0 4px rgba(255, 176, 91, 0.2);
+  border-color: var(--vh-accent-warm);
+  box-shadow: var(--vh-focus-ring);
 }
 
 .primary-btn {
   padding: 0.9rem 1.6rem;
   border-radius: 999px;
-  background: linear-gradient(135deg, #4059d6, #6c81ff);
-  color: #fff;
+  background: var(--vh-button-primary);
+  color: var(--vh-text-primary);
   border: none;
   font-weight: 600;
   cursor: pointer;
@@ -175,19 +175,19 @@ header h1 {
 
 .primary-btn:not(:disabled):hover {
   transform: translateY(-1px);
-  box-shadow: 0 12px 24px rgba(67, 88, 182, 0.35);
+  box-shadow: var(--vh-button-primary-hover-shadow);
 }
 
 .error {
-  color: #ffb4b4;
-  background: rgba(255, 124, 124, 0.18);
-  border: 1px solid rgba(255, 124, 124, 0.35);
+  color: #f3c5c5;
+  background: var(--vh-alert-error-bg);
+  border: 1px solid var(--vh-alert-error-border);
   padding: 0.75rem 1rem;
   border-radius: 0.9rem;
 }
 
 footer {
-  color: rgba(224, 229, 255, 0.55);
+  color: var(--vh-text-muted);
 }
 </style>
 

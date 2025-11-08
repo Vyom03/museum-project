@@ -311,7 +311,7 @@ function slotStatusColour(slot) {
   display: flex;
   flex-direction: column;
   gap: 2.2rem;
-  color: #e2e8ff;
+  color: var(--vh-text-primary);
 }
 
 .admin-page,
@@ -338,16 +338,16 @@ function slotStatusColour(slot) {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  background: rgba(10, 17, 34, 0.78);
+  background: var(--vh-surface-100);
   border-radius: 1.75rem;
-  border: 1px solid rgba(120, 144, 255, 0.22);
+  border: 1px solid var(--vh-border-strong);
   padding: clamp(1.6rem, 4vw, 2.4rem);
-  box-shadow: 0 24px 48px rgba(5, 10, 26, 0.5);
+  box-shadow: var(--vh-shadow-strong);
 }
 
 .lead {
   margin-top: 0.6rem;
-  color: rgba(224, 229, 255, 0.7);
+  color: var(--vh-text-secondary);
 }
 
 .actions {
@@ -356,9 +356,9 @@ function slotStatusColour(slot) {
 }
 
 .ghost-btn {
-  background: rgba(43, 63, 158, 0.12);
-  color: #a8baff;
-  border: 1px solid rgba(120, 144, 255, 0.3);
+  background: var(--vh-button-ghost-bg);
+  color: var(--vh-text-secondary);
+  border: 1px solid var(--vh-border-soft);
   border-radius: 999px;
   padding: 0.8rem 1.6rem;
   font-weight: 600;
@@ -366,7 +366,7 @@ function slotStatusColour(slot) {
 }
 
 .ghost-btn:hover {
-  background: rgba(43, 63, 158, 0.2);
+  background: var(--vh-button-ghost-hover-bg);
   transform: translateY(-1px);
 }
 
@@ -375,8 +375,8 @@ function slotStatusColour(slot) {
   gap: 0.75rem;
   padding: 0.4rem;
   border-radius: 999px;
-  background: rgba(10, 17, 34, 0.6);
-  border: 1px solid rgba(120, 144, 255, 0.22);
+  background: var(--vh-surface-muted);
+  border: 1px solid var(--vh-border-soft);
   width: fit-content;
 }
 
@@ -384,23 +384,23 @@ function slotStatusColour(slot) {
   padding: 0.55rem 1.4rem;
   border-radius: 999px;
   text-decoration: none;
-  color: rgba(224, 229, 255, 0.75);
+  color: var(--vh-text-muted);
   font-weight: 600;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
 .admin-nav-link.router-link-active {
-  background: linear-gradient(135deg, #4059d6, #6c81ff);
-  color: #fff;
+  background: var(--vh-button-primary);
+  color: var(--vh-text-primary);
 }
 
 .filters {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  background: rgba(10, 17, 34, 0.72);
+  background: var(--vh-surface-100);
   border-radius: 1.75rem;
-  border: 1px solid rgba(120, 144, 255, 0.2);
+  border: 1px solid var(--vh-border-soft);
   padding: 1.3rem 1.6rem;
 }
 
@@ -415,28 +415,28 @@ function slotStatusColour(slot) {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  color: rgba(224, 229, 255, 0.6);
+  color: var(--vh-text-subtle);
 }
 
 .filter-field select,
 .filter-field input {
   border-radius: 0.9rem;
-  border: 1px solid rgba(120, 144, 255, 0.35);
-  background: rgba(9, 14, 30, 0.82);
-  color: #f3f6ff;
+  border: 1px solid var(--vh-border-soft);
+  background: var(--vh-surface-200);
+  color: var(--vh-text-primary);
   padding: 0.85rem 1rem;
   font-size: 0.95rem;
   outline: none;
 }
 
 .filter-field input::placeholder {
-  color: rgba(224, 229, 255, 0.45);
+  color: var(--vh-text-subtle);
 }
 
 .filter-field input:focus,
 .filter-field select:focus {
-  border-color: rgba(255, 176, 91, 0.8);
-  box-shadow: 0 0 0 4px rgba(255, 176, 91, 0.18);
+  border-color: var(--vh-accent-warm);
+  box-shadow: var(--vh-focus-ring);
 }
 
 .filter-field.grow {
@@ -450,43 +450,44 @@ function slotStatusColour(slot) {
 }
 
 .summary-card {
-  background: linear-gradient(135deg, rgba(12, 22, 46, 0.78), rgba(8, 16, 34, 0.7));
+  background: var(--vh-surface-200);
   border-radius: 1.4rem;
-  border: 1px solid rgba(120, 144, 255, 0.18);
+  border: 1px solid var(--vh-border-soft);
   padding: 1.2rem;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  box-shadow: 0 18px 38px rgba(4, 10, 24, 0.45);
+  box-shadow: var(--vh-shadow-soft);
 }
 
 .summary-card .label {
   text-transform: uppercase;
   font-size: 0.7rem;
   letter-spacing: 0.16em;
-  color: rgba(224, 229, 255, 0.55);
+  color: var(--vh-text-subtle);
 }
 
 .summary-card .value {
   font-size: 1.5rem;
+  color: var(--vh-text-primary);
 }
 
 .summary-card .sub {
   font-size: 0.8rem;
-  color: rgba(224, 229, 255, 0.6);
+  color: var(--vh-text-muted);
 }
 
 .error-banner {
   padding: 1rem;
   border-radius: 1rem;
-  background: rgba(255, 124, 124, 0.15);
-  border: 1px solid rgba(255, 124, 124, 0.3);
-  color: #ffd8d8;
+  background: var(--vh-alert-error-bg);
+  border: 1px solid var(--vh-alert-error-border);
+  color: var(--vh-text-primary);
 }
 
 .loading {
   font-weight: 600;
-  color: rgba(224, 229, 255, 0.6);
+  color: var(--vh-text-muted);
 }
 
 .date-groups {
@@ -496,11 +497,11 @@ function slotStatusColour(slot) {
 }
 
 .date-group {
-  background: rgba(10, 17, 34, 0.74);
+  background: var(--vh-surface-100);
   border-radius: 1.8rem;
-  border: 1px solid rgba(120, 144, 255, 0.2);
+  border: 1px solid var(--vh-border-soft);
   padding: clamp(1.4rem, 3vw, 2rem);
-  box-shadow: 0 20px 44px rgba(4, 10, 24, 0.42);
+  box-shadow: var(--vh-shadow-soft);
 }
 
 .group-header {
@@ -518,7 +519,7 @@ function slotStatusColour(slot) {
 
 .group-stats {
   margin: 0.35rem 0 0;
-  color: rgba(224, 229, 255, 0.65);
+  color: var(--vh-text-muted);
 }
 
 .slot-grid {
@@ -528,9 +529,9 @@ function slotStatusColour(slot) {
 }
 
 .slot-card {
-  background: rgba(12, 20, 44, 0.82);
+  background: var(--vh-surface-200);
   border-radius: 1.4rem;
-  border: 1px solid rgba(120, 144, 255, 0.25);
+  border: 1px solid var(--vh-border-soft);
   padding: 1.2rem;
   display: flex;
   flex-direction: column;
@@ -551,7 +552,7 @@ function slotStatusColour(slot) {
 
 .slot-header p {
   margin: 0.35rem 0 0;
-  color: rgba(224, 229, 255, 0.6);
+  color: var(--vh-text-muted);
 }
 
 .slot-status {
@@ -564,18 +565,18 @@ function slotStatusColour(slot) {
 }
 
 .slot-status.status-open {
-  background: rgba(78, 201, 164, 0.18);
-  color: #9ef0d0;
+  background: rgba(112, 176, 148, 0.2);
+  color: #8ed1b5;
 }
 
 .slot-status.status-high {
-  background: rgba(255, 193, 111, 0.22);
-  color: #ffddaa;
+  background: rgba(197, 167, 121, 0.2);
+  color: var(--vh-accent-warm);
 }
 
 .slot-status.status-full {
-  background: rgba(255, 122, 122, 0.22);
-  color: #ffc2c2;
+  background: rgba(205, 92, 92, 0.2);
+  color: #f2b5b5;
 }
 
 .registration-list {
@@ -588,9 +589,9 @@ function slotStatusColour(slot) {
 }
 
 .registration-item {
-  background: rgba(10, 17, 34, 0.7);
+  background: var(--vh-surface-300);
   border-radius: 1rem;
-  border: 1px solid rgba(120, 144, 255, 0.18);
+  border: 1px solid var(--vh-border-soft);
   padding: 0.9rem 1rem;
   display: flex;
   flex-direction: column;
@@ -610,7 +611,7 @@ function slotStatusColour(slot) {
 
 .registration-main .meta {
   font-size: 0.85rem;
-  color: rgba(224, 229, 255, 0.7);
+  color: var(--vh-text-muted);
 }
 
 .registration-meta {
@@ -618,27 +619,28 @@ function slotStatusColour(slot) {
   flex-direction: column;
   gap: 0.3rem;
   font-size: 0.9rem;
-  color: rgba(224, 229, 255, 0.7);
+  color: var(--vh-text-muted);
 }
 
 .registration-meta .contact span {
-  color: rgba(224, 229, 255, 0.65);
+  color: var(--vh-text-muted);
 }
 
 .registration-meta .organisation {
   font-weight: 600;
+  color: var(--vh-text-secondary);
 }
 
 .registration-meta .submitted {
   font-size: 0.8rem;
-  color: rgba(224, 229, 255, 0.5);
+  color: var(--vh-text-subtle);
 }
 
 .badge.guided {
   display: inline-block;
   margin-top: 0.4rem;
-  background: rgba(120, 144, 255, 0.22);
-  color: #dbe2ff;
+  background: var(--vh-accent-primary-soft);
+  color: var(--vh-text-secondary);
   padding: 0.3rem 0.75rem;
   border-radius: 999px;
   font-size: 0.75rem;
@@ -649,13 +651,13 @@ function slotStatusColour(slot) {
 
 .notes {
   font-style: italic;
-  color: rgba(224, 229, 255, 0.7);
+  color: var(--vh-text-secondary);
 }
 
 .empty-slot {
   margin: 0;
   font-size: 0.85rem;
-  color: rgba(224, 229, 255, 0.55);
+  color: var(--vh-text-muted);
   text-align: center;
   padding: 0.5rem 0;
 }
@@ -664,9 +666,9 @@ function slotStatusColour(slot) {
   text-align: center;
   padding: 2rem;
   border-radius: 1.6rem;
-  background: rgba(12, 20, 44, 0.8);
-  border: 1px solid rgba(120, 144, 255, 0.2);
-  color: rgba(224, 229, 255, 0.65);
+  background: var(--vh-surface-100);
+  border: 1px solid var(--vh-border-soft);
+  color: var(--vh-text-muted);
 }
 
 @media (max-width: 640px) {

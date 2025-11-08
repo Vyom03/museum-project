@@ -191,7 +191,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  color: #e2e8ff;
+  color: var(--vh-text-primary);
 }
 
 .dashboard,
@@ -218,17 +218,17 @@ onMounted(() => {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  background: rgba(10, 17, 34, 0.75);
+  background: var(--vh-surface-100);
   border-radius: 1.75rem;
-  border: 1px solid rgba(120, 144, 255, 0.2);
+  border: 1px solid var(--vh-border-strong);
   padding: clamp(1.5rem, 4vw, 2.4rem);
-  box-shadow: 0 24px 50px rgba(4, 10, 24, 0.45);
+  box-shadow: var(--vh-shadow-strong);
 }
 
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: rgba(224, 229, 255, 0.6);
+  color: var(--vh-text-muted);
   font-size: 0.8rem;
 }
 
@@ -248,8 +248,8 @@ onMounted(() => {
   gap: 0.75rem;
   padding: 0.4rem;
   border-radius: 999px;
-  background: rgba(10, 17, 34, 0.6);
-  border: 1px solid rgba(120, 144, 255, 0.22);
+  background: var(--vh-surface-muted);
+  border: 1px solid var(--vh-border-soft);
   width: fit-content;
 }
 
@@ -257,20 +257,20 @@ onMounted(() => {
   padding: 0.55rem 1.4rem;
   border-radius: 999px;
   text-decoration: none;
-  color: rgba(224, 229, 255, 0.75);
+  color: var(--vh-text-muted);
   font-weight: 600;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
 .admin-nav-link.router-link-active {
-  background: linear-gradient(135deg, #4059d6, #6c81ff);
-  color: #fff;
+  background: var(--vh-button-primary);
+  color: var(--vh-text-primary);
 }
 
 .ghost-btn {
-  background: rgba(43, 63, 158, 0.12);
-  color: #a8baff;
-  border: 1px solid rgba(120, 144, 255, 0.3);
+  background: var(--vh-button-ghost-bg);
+  color: var(--vh-text-secondary);
+  border: 1px solid var(--vh-border-soft);
   border-radius: 999px;
   padding: 0.8rem 1.6rem;
   font-weight: 600;
@@ -278,7 +278,7 @@ onMounted(() => {
 }
 
 .ghost-btn:hover {
-  background: rgba(43, 63, 158, 0.2);
+  background: var(--vh-button-ghost-hover-bg);
   transform: translateY(-1px);
 }
 
@@ -294,39 +294,40 @@ onMounted(() => {
 }
 
 .metric-card {
-  background: linear-gradient(135deg, rgba(12, 22, 46, 0.78), rgba(8, 16, 34, 0.7));
+  background: var(--vh-surface-200);
   border-radius: 1.5rem;
   padding: 1.4rem;
-  border: 1px solid rgba(120, 144, 255, 0.18);
+  border: 1px solid var(--vh-border-soft);
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  box-shadow: 0 20px 44px rgba(4, 10, 24, 0.4);
+  box-shadow: var(--vh-shadow-soft);
 }
 
 .metric-label {
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-size: 0.7rem;
-  color: rgba(224, 229, 255, 0.55);
+  color: var(--vh-text-subtle);
 }
 
 .metric-value {
   font-size: 1.45rem;
   font-weight: 700;
+  color: var(--vh-text-primary);
 }
 
 .metric-sub {
   font-size: 0.85rem;
-  color: rgba(224, 229, 255, 0.6);
+  color: var(--vh-text-muted);
 }
 
 .panel {
-  background: rgba(10, 17, 34, 0.72);
+  background: var(--vh-surface-100);
   border-radius: 1.75rem;
-  border: 1px solid rgba(120, 144, 255, 0.2);
+  border: 1px solid var(--vh-border-soft);
   padding: clamp(1.5rem, 4vw, 2.2rem);
-  box-shadow: 0 20px 44px rgba(4, 10, 24, 0.4);
+  box-shadow: var(--vh-shadow-soft);
 }
 
 .panel header {
@@ -349,7 +350,7 @@ onMounted(() => {
 .data-table th,
 .data-table td {
   padding: 0.75rem 0.5rem;
-  border-bottom: 1px solid rgba(120, 144, 255, 0.14);
+  border-bottom: 1px solid var(--vh-border-soft);
   text-align: left;
 }
 
@@ -357,7 +358,7 @@ onMounted(() => {
   text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 0.12em;
-  color: rgba(224, 229, 255, 0.55);
+  color: var(--vh-text-subtle);
 }
 
 .activity-list {
@@ -373,7 +374,7 @@ onMounted(() => {
   display: flex;
   justify-content: space-between;
   gap: 1.5rem;
-  border-bottom: 1px solid rgba(120, 144, 255, 0.14);
+  border-bottom: 1px solid var(--vh-border-soft);
   padding-bottom: 0.75rem;
 }
 
@@ -383,7 +384,7 @@ onMounted(() => {
 
 .activity-item p {
   margin: 0.2rem 0 0;
-  color: rgba(224, 229, 255, 0.6);
+  color: var(--vh-text-muted);
   font-size: 0.85rem;
 }
 
@@ -392,20 +393,20 @@ onMounted(() => {
   align-items: center;
   gap: 1rem;
   font-size: 0.85rem;
-  color: rgba(224, 229, 255, 0.68);
+  color: var(--vh-text-muted);
 }
 
 .status[data-status='pending'] {
-  color: #ffbd78;
+  color: var(--vh-accent-warm);
 }
 
 .status[data-status='completed'],
 .status[data-status='fulfilled'] {
-  color: #87f1c7;
+  color: #86d5b8;
 }
 
 .empty-state {
-  color: rgba(224, 229, 255, 0.55);
+  color: var(--vh-text-muted);
   font-size: 0.9rem;
   padding: 0.75rem 0;
 }
@@ -413,14 +414,14 @@ onMounted(() => {
 .error-banner {
   padding: 1rem;
   border-radius: 1rem;
-  background: rgba(255, 124, 124, 0.15);
-  border: 1px solid rgba(255, 124, 124, 0.3);
-  color: #ffd8d8;
+  background: var(--vh-alert-error-bg);
+  border: 1px solid var(--vh-alert-error-border);
+  color: var(--vh-text-primary);
 }
 
 .loading {
   font-weight: 600;
-  color: rgba(224, 229, 255, 0.6);
+  color: var(--vh-text-muted);
 }
 
 @media (max-width: 720px) {

@@ -81,7 +81,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   gap: 4rem;
-  color: #e2e8ff;
+  color: var(--vh-text-primary);
   padding-inline: clamp(1.5rem, 6vw, 6rem);
   padding-block: clamp(2rem, 5vw, 5rem);
 }
@@ -92,10 +92,10 @@ onMounted(() => {
   border-radius: 2.25rem;
   overflow: hidden;
   background:
-    radial-gradient(circle at 10% 20%, rgba(120, 144, 255, 0.28), transparent 55%),
-    radial-gradient(circle at 90% 25%, rgba(255, 176, 91, 0.18), transparent 45%),
-    linear-gradient(135deg, rgba(6, 12, 26, 0.95), rgba(14, 28, 54, 0.92));
-  box-shadow: 0 30px 70px rgba(4, 10, 24, 0.6);
+    radial-gradient(circle at 10% 20%, rgba(120, 143, 213, 0.2), transparent 55%),
+    radial-gradient(circle at 90% 25%, rgba(197, 167, 121, 0.16), transparent 45%),
+    linear-gradient(135deg, rgba(8, 14, 28, 0.92), rgba(16, 28, 48, 0.9));
+  box-shadow: var(--vh-shadow-strong);
 }
 
 .about-hero::after {
@@ -112,12 +112,12 @@ onMounted(() => {
 .hero-overlay {
   position: relative;
   backdrop-filter: blur(18px);
-  background: linear-gradient(135deg, rgba(4, 10, 24, 0.45), rgba(12, 24, 48, 0.62));
+  background: linear-gradient(135deg, rgba(6, 12, 26, 0.55), rgba(14, 26, 46, 0.6));
   border-radius: 1.75rem;
   padding: clamp(2.6rem, 5vw, 4.2rem);
   max-width: 940px;
-  border: 1px solid rgba(120, 144, 255, 0.18);
-  box-shadow: 0 30px 70px rgba(4, 10, 24, 0.55);
+  border: 1px solid var(--vh-border-strong);
+  box-shadow: var(--vh-shadow-soft);
   margin: 0 auto;
 }
 
@@ -125,7 +125,7 @@ onMounted(() => {
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-size: 0.8rem;
-  color: rgba(224, 229, 255, 0.55);
+  color: var(--vh-text-subtle);
   margin-bottom: 0.75rem;
 }
 
@@ -146,7 +146,7 @@ onMounted(() => {
 .lead {
   margin-top: 1rem;
   line-height: 1.8;
-  color: rgba(224, 229, 255, 0.78);
+  color: var(--vh-text-secondary);
   font-size: 1.08rem;
 }
 
@@ -165,12 +165,12 @@ onMounted(() => {
   gap: 1.4rem;
   font-size: 1.05rem;
   line-height: 1.8;
-  color: rgba(224, 229, 255, 0.78);
+  color: var(--vh-text-secondary);
   padding: clamp(1.8rem, 4vw, 2.6rem);
   border-radius: 1.75rem;
-  background: linear-gradient(135deg, rgba(12, 22, 46, 0.78), rgba(8, 16, 34, 0.7));
-  border: 1px solid rgba(120, 144, 255, 0.18);
-  box-shadow: 0 24px 48px rgba(4, 10, 24, 0.45);
+  background: var(--vh-surface-100);
+  border: 1px solid var(--vh-border-soft);
+  box-shadow: var(--vh-shadow-soft);
 }
 
 .story-card p {
@@ -178,16 +178,16 @@ onMounted(() => {
 }
 
 .body-placeholder {
-  color: rgba(224, 229, 255, 0.55);
+  color: var(--vh-text-muted);
   font-style: italic;
 }
 
 .media-card {
   border-radius: 1.75rem;
   overflow: hidden;
-  border: 1px solid rgba(107, 132, 255, 0.22);
-  background: rgba(10, 17, 34, 0.8);
-  box-shadow: 0 24px 52px rgba(4, 10, 24, 0.55);
+  border: 1px solid var(--vh-border-strong);
+  background: var(--vh-surface-100);
+  box-shadow: var(--vh-shadow-soft);
   display: flex;
   flex-direction: column;
 }
@@ -200,7 +200,7 @@ onMounted(() => {
 
 .caption {
   padding: 0.85rem 1.1rem;
-  color: rgba(224, 229, 255, 0.6);
+  color: var(--vh-text-muted);
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -208,9 +208,9 @@ onMounted(() => {
 
 .media-placeholder {
   border-radius: 1.75rem;
-  border: 1px dashed rgba(107, 132, 255, 0.3);
-  background: rgba(10, 17, 34, 0.55);
-  color: rgba(224, 229, 255, 0.55);
+  border: 1px dashed var(--vh-border-soft);
+  background: var(--vh-surface-200);
+  color: var(--vh-text-muted);
   display: grid;
   place-items: center;
   padding: 2.2rem;
@@ -222,14 +222,14 @@ onMounted(() => {
 .error-banner {
   padding: 1rem;
   border-radius: 1rem;
-  background: rgba(255, 124, 124, 0.15);
-  border: 1px solid rgba(255, 124, 124, 0.3);
-  color: #ffd8d8;
+  background: var(--vh-alert-error-bg);
+  border: 1px solid var(--vh-alert-error-border);
+  color: var(--vh-text-primary);
 }
 
 .loading {
   font-weight: 600;
-  color: rgba(224, 229, 255, 0.6);
+  color: var(--vh-text-muted);
 }
 
 @media (max-width: 720px) {
